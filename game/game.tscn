@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://origin/origin.gd" type="Script" id=1]
+[ext_resource path="res://game/game.gd" type="Script" id=2]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://planet/planet.tscn" type="PackedScene" id=4]
+[ext_resource path="res://background/background.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/hud/hud.tscn" type="PackedScene" id=6]
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Background" parent="." instance=ExtResource( 5 )]
+z_as_relative = false
+
+[node name="Origin" type="Position2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="Player" parent="Origin" instance=ExtResource( 3 )]
+distance = 100.0
+
+[node name="Planet" parent="Origin" instance=ExtResource( 4 )]
+
+[node name="Meteors" type="Node" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource( 6 )]
+
+[node name="MeteorTimer" type="Timer" parent="."]
+autostart = true
+[connection signal="timeout" from="MeteorTimer" to="." method="_on_MeteorTimer_timeout"]

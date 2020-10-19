@@ -1,0 +1,9 @@
+# Build directory
+build
+
+# Import Files
+.import
+*.import
+
+# Export Presets
+export_presets.cfg
